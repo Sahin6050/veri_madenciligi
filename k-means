@@ -1,0 +1,28 @@
+import numpy as np
+from sklearn.cluster import KMeans
+import matplotlib.pyplot as plt
+
+# Örnek veri oluşturulması
+np.random.seed(42)
+data = np.concatenate([np.random.normal(0, 1, (50, 2)), 
+                       np.random.normal(5, 1, (50, 2)),
+                       np.random.normal(10, 1, (50, 2))])
+
+# K-Means modelini oluşturma.
+kmeans = KMeans(n_clusters=3, random_state=42)
+
+# Modeli eğitme.
+kmeans.fit(data)
+
+# Küme merkezlerini ve etiketleri alma.
+cluster_centers = kmeans.cluster_centers_
+labels = kmeans.labels_
+
+# Veriyi ve küme merkezlerini görselleştirme.
+plt.scatter(data[:, 0], data[:, 1], c=labels, cmap='viridis', marker='o', edgecolors='w', label='Data Points')
+plt.scatter(cluster_centers[:, 0], cluster_centers[:, 1], c='red', marker='X', s=200, label='Cluster Centers')
+plt.title('K-Means Clustering')
+plt.xlabel('Feature 1')
+plt.ylabel('Feature 2')
+plt.legend()
+plt.show()
