@@ -2,21 +2,21 @@ import numpy as np
 
 # Verilen gözlem tablosunu bu şekilde gösteriyoruz.
 veriler = np.array([
-    [2, 4, 'kötü'],
-    [3, 6, 'iyi'],
-    [3, 4, 'iyi'],
-    [4, 10, 'kötü'],
-    [5, 8, 'kötü'],
-    [6, 3, 'iyi'],
-    [7, 9, 'iyi'],
-    [9, 7, 'kötü'],
-    [11, 7, 'kötü'],
-    [10, 2, 'kötü']
+    [2000, 4000, 'mutlu değil'],
+    [5000, 4300, 'mutlu'],
+    [3000, 2900, 'mutlu'],
+    [4000, 10000, 'mutlu değil'],
+    [5000, 8000, 'mutlu değil'],
+    [6000, 3000, 'mutlu'],
+    [7000, 6200, 'mutlu'],
+    [3400, 7000, 'mutlu değil'],
+    [4500, 5600, 'mutlu değil'],
+    [2850, 4000, 'mutlu değil']
 ])
 
 # Kullanıcıdan x1 ve x2 değerlerinini alıyoruz
-x1_yeni = float(input("Yeni x1 değerini girin: "))
-x2_yeni = float(input("Yeni x2 değerini girin: "))
+x1_yeni = float(input("Maaş değerini girin: "))
+x2_yeni = float(input("Maaş Beklenti değerini girin: "))
 
 # k-NN algoritması için k-değeri 3 olarak seçildi bunun sebebi istenen verilerin hangi sınıfa ait
 #olduğunu belirlemek için
@@ -29,7 +29,7 @@ uzakliklar = np.sqrt(np.sum((veriler[:, :2].astype(float) - np.array([x1_yeni, x
 sirali_indisler = np.argsort(uzakliklar)
 
 # K en yakın komşuların sınıflarını sayısal bir türe dönüştürme
-k_en_yakin_siniflar = np.where(veriler[sirali_indisler[:k_degeri], 2] == 'iyi', 1, 0)
+k_en_yakin_siniflar = np.where(veriler[sirali_indisler[:k_degeri], 2] == 'mutlu', 1, 0)
 
 # Sınıflar arasındaki frekansları sayma
 sinif_frekanslari = np.bincount(k_en_yakin_siniflar)
@@ -37,4 +37,4 @@ sinif_frekanslari = np.bincount(k_en_yakin_siniflar)
 # En çok tekrar eden sınıfı bulma
 en_cok_tekrar_edilen_sinif = np.argmax(sinif_frekanslari)
 
-print(f"Girdiğiniz nokta ({x1_yeni}, {x2_yeni}) için tahmin edilen sınıf: {'iyi' if en_cok_tekrar_edilen_sinif else 'kötü'}")
+print(f"Girdiğiniz değerler ({x1_yeni}, {x2_yeni}) için tahmin edilen sınıf: {'mutlu' if en_cok_tekrar_edilen_sinif else 'mutlu değil'}")
