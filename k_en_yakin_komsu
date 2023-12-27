@@ -2,16 +2,23 @@ import numpy as np
 
 # Verilen gözlem tablosunu bu şekilde gösteriyoruz.
 veriler = np.array([
-    [2000, 4000, 'mutlu değil'],
-    [5000, 4300, 'mutlu'],
-    [3000, 2900, 'mutlu'],
-    [4000, 10000, 'mutlu değil'],
-    [5000, 8000, 'mutlu değil'],
-    [6000, 3000, 'mutlu'],
-    [7000, 6200, 'mutlu'],
-    [3400, 7000, 'mutlu değil'],
-    [4500, 5600, 'mutlu değil'],
-    [2850, 4000, 'mutlu değil']
+    #Maaş   MaaşBeklentisi  MutlulukTahmini
+    [2000,  4000,           'mutlu değil'],
+    [5000,  4300,           'mutlu'],
+    [3000,  2900,           'mutlu'],
+    [4000,  10000,          'mutlu değil'],
+    [5000,  8000,           'mutlu değil'],
+    [6000,  3000,           'mutlu'],
+    [7000,  6200,           'mutlu'],
+    [3400,  7000,           'mutlu değil'],
+    [4500,  5600,           'mutlu değil'],
+    [2850,  4000,           'mutlu değil'],
+    [6000,  3000,           'mutlu'],
+    [7000,  6200,           'mutlu'],
+    [3400,  7000,           'mutlu değil'],
+    [4500,  5600,           'mutlu değil'],
+    [2850,  4000,           'mutlu değil'],
+    [5500,  3000,           'mutlu']
 ])
 
 # Kullanıcıdan x1 ve x2 değerlerinini alıyoruz
